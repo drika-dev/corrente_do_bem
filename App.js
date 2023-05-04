@@ -1,46 +1,40 @@
 import * as React from "react";
-import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Button } from "react-native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
-function HomeScreen({ navigation }) {
+import Cadastro_Usuario from "./src/components/cadastro_usuario";
+import Cadastro_Permissao from "./src/components/cadastro_permissoes";
+import Cadastro_Servico from "./src/components/cadastro_servico";
+import Servicos_Feitos from "./src/components/servicos_feitos";
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Vá para detalhes"
-        onPress={() => navigation.navigate("Details")}
+    <Drawer.Navigator
+      useLegacyImplementation
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: "#e8e8e7",
+          width: 240,
+          primary: "rgb(179, 129, 230)",
+        },
+      }}
+    >
+      <Drawer.Screen name="Página Inicial" component={Servicos_Feitos} />
+      <Drawer.Screen name="Cadastrar Usuario" component={Cadastro_Usuario} />
+      <Drawer.Screen
+        name="Cadastrar Permissões"
+        component={Cadastro_Permissao}
       />
-    </View>
+      <Drawer.Screen name="Cadastrar Serviço" component={Cadastro_Servico} />
+    </Drawer.Navigator>
   );
 }
 
-const Stack = createNativeStackNavigator();
-
-function App() {
+export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Inicio" component={HomeScreen} />
-        <Stack.Screen name="Detalhes" component={DetailsScreen} />
-      </Stack.Navigator>
+      <MyDrawer />
     </NavigationContainer>
   );
 }
-
-function DetailsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push("Details")}
-      />
-      <Button title="Inicio" onPress={() => navigation.navigate("Home")} />
-      <Button title="Volte" onPress={() => navigation.goBack()} />
-      <Button title="Primeira tela" onPress={() => navigation.popToTop()} />
-    </View>
-  );
-}
-export default App;
