@@ -5,7 +5,7 @@ import { Text, View, Image, TextInput, TouchableOpacity } from "react-native";
 import Style from "../../styles/style";
 
 export default function Cadastro() {
-    const [email, setEmai] = useState("");
+    const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
 
@@ -14,7 +14,7 @@ export default function Cadastro() {
             <Text> </Text>
             <Image
                 style={Style.image_logo}
-                source={require("../../assets/logo.png")}
+                source={require("../../assets/login.jpg")}
             />
             <StatusBar style="auto" />
             <TextInput placeholder="Seu Email" value={email} style={Style.input} />
