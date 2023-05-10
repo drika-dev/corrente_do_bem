@@ -1,93 +1,66 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, TextInput, Text, Image, TouchableOpacity } from "react-native";
+import Style from "../../styles/style";
 
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
-const schema = yup.object({
-  nome: yup.string().required("Informe seu nome"),
-  email: yup.string().email("Email Inválido").required("Informe seu email"),
-  telefone: yup
-    .string()
-    .min(11, "Número Iválido")
-    .required("Informe apenas números"),
-});
+const CadastroVoluntario = () => {
+  const [nome, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
 
-export default function Login() {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  const handleNameChange = (text) => {
+    setName(text);
+  };
 
-  function handleLogihand(data) {
-    console.log(data);
-  }
+  const handleEmailChange = (text) => {
+    setEmail(text);
+  };
+
+  const handleTelefoneChange = (text) => {
+    setTelefone(text);
+  };
+
+
+  const handleSubmit = () => {
+    // Aqui será para fazer a lógica para enviar os dados de cadastro para o servidor
+    console.log("Digite Seu Nome", nome);
+    console.log("Email:", email);
+    console.log("Telefone: ", telefone);
+  };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Seja bem vindo(a)!</Text>
-
-      <Controller
-        control={control}
-        name="nome"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur} // chamado quando o textinput é focado.
-            placeholder="Digite seu nome"
-          />
-        )}
+    <View style={Style.container}>
+      <Image
+        style={Style.image_logo}
+        source={require("../../assets/trabalhador.jpg")} // caminho e nome do arquivo da imagem do projeto
       />
-      {errors.nome && (
-        <Text style={styles.labelError}>{errors.nome?.message}</Text>
-      )}
-
-      <Controller
-        control={control}
-        name="email"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur} // chamado quando o textinput é tocado.
-            placeholder="Digite seu email"
-          />
-        )}
+      <Text style={Style.title}>Cadastre um Voluntário </Text>
+      <TextInput
+        style={Style.input}
+        onChangeText={handleNameChange}
+        value={nome}
+        placeholder="Digite Seu Nome"
       />
-      {errors.email && (
-        <Text style={styles.labelError}>{errors.email?.message}</Text>
-      )}
-
-      <Controller
-        control={control}
-        name="telefone"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur} // chamado quando o textinput é focado.
-            placeholder="Digite seu telefone"
-          />
-        )}
+      <TextInput
+        style={Style.input}
+        onChangeText={handleEmailChange}
+        value={email}
+        placeholder="Qual seu e-mail ?"
       />
-      {errors.telefone && (
-        <Text style={styles.labelError}>{errors.telefone?.message}</Text>
-      )}
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleSubmit(handleLogihand)}
-      >
-        <Text style={styles.buttonText}>Cadastrar</Text>
+      <TextInput
+        style={Style.input}
+        onChangeText={handleTelefoneChange}
+        value={telefone}
+        placeholder="Digite seu telefone"
+      />
+
+
+      <TouchableOpacity style={Style.botao} onPress={handleSubmit}>
+        <Text style={Style.textbtn}>Cadastrar Voluntário </Text>
       </TouchableOpacity>
     </View>
   );
-}
+};
+
+export default CadastroVoluntario;

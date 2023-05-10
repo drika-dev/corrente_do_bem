@@ -34,10 +34,6 @@ const Servicos_feitos = () => {
         style={Style.image}
         source={require("../../assets/casa7.jpg")} // caminho e nome do arquivo da imagem do projeto
       />
-
-      <TouchableOpacity style={Style.botao} onPress={() => voltar()}>
-        <Text style={Style.textbtn}>Voltar </Text>
-      </TouchableOpacity>
     </View>
   );
 };
