@@ -1,32 +1,34 @@
 import React, { useState } from "react";
 import { View, TextInput, Text, Image, TouchableOpacity } from "react-native";
 import Style from "../../styles/style";
-const PermissionForm = () => {
+
+
+const CadastroServico = () => {
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [data, setdata] = useState("");
-  const [hora, sethora] = useState("");
+  const [servico, setServico] = useState("");
+  const [data, setData] = useState("");
+  const [hora, setHora] = useState("");
 
   const handleNameChange = (text) => {
     setName(text);
   };
 
-  const handleDescriptionChange = (text) => {
-    setDescription(text);
+  const handleServicoChange = (text) => {
+    setServico(text);
   };
 
-  const handledataChange = (text) => {
-    setdata(text);
+  const handleDataChange = (text) => {
+    setData(text);
   };
 
-  const handlehoraChange = (text) => {
-    sethora(text);
+  const handleHoraChange = (text) => {
+    setHora(text);
   };
 
   const handleSubmit = () => {
     // Aqui será para fazer a lógica para enviar os dados de cadastro para o servidor
     console.log("Digite Seu Nome", name);
-    console.log("Qual sera o serviço prestado ?", description);
+    console.log("Qual sera o serviço prestado ?", servico);
     console.log("Qual a data da prestaçao de serviço ?", data);
     console.log("Qual a hora da prestaçao de serviço ?", hora);
   };
@@ -46,21 +48,21 @@ const PermissionForm = () => {
       />
       <TextInput
         style={Style.input}
-        onChangeText={handleDescriptionChange}
-        value={description}
+        onChangeText={handleServicoChange}
+        value={servico}
         placeholder="Qual sera o serviço prestado ?"
       />
 
       <TextInput
         style={Style.input}
-        onChangeText={handledataChange}
+        onChangeText={handleDataChange}
         value={data}
         placeholder="Qual a data da prestaçao de serviço ?"
       />
 
       <TextInput
         style={Style.input}
-        onChangeText={handlehoraChange}
+        onChangeText={handleHoraChange}
         value={hora}
         placeholder="Qual a hora da prestaçao de serviço ?"
       />
@@ -72,4 +74,4 @@ const PermissionForm = () => {
   );
 };
 
-export default PermissionForm;
+export default CadastroServico;
