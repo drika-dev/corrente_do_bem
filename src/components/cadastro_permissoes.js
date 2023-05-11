@@ -23,7 +23,7 @@ const PermissionForm = () => {
     <View style={Style.container}>
       <Image
         style={Style.image_logo}
-        source={require("../../assets/logo.png")} // caminho e nome do arquivo da imagem do projeto
+        source={require("../../assets/acesso.png")} // caminho e nome do arquivo da imagem do projeto
       />
       <Text style={Style.title}>Cadastro de Permissão de Usuários</Text>
       <TextInput

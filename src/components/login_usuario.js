@@ -29,10 +29,6 @@ export default function Cadastro() {
             <TouchableOpacity style={Style.botao} onPress={() => login()}>
                 <Text style={Style.buttonText}> Login</Text>
             </TouchableOpacity>
-
-            <TouchableOpacity style={Style.botao} onPress={() => cadastro()}>
-                <Text style={Style.buttonText}> Cadastrar </Text>
-            </TouchableOpacity>
         </View>
     );
 }

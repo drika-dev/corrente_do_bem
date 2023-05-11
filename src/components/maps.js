@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
  
-const PermissionForm = () => {
+const Mapa = () => {
   
-
   return (
      
-    
     <View style={{ backgroundColor: "#696969", flex: 1, justifyContent: 'center', alignItems: 'center'}}>
     <MapView style={{ width: '100%', height:'100%'}} 
      initialRegion={{
@@ -50,6 +48,4 @@ const PermissionForm = () => {
 };
 
 
-
-
-export default PermissionForm;
+export default Mapa;
