@@ -12,7 +12,7 @@ import Style from "../../styles/style";
 const Servicos_feitos = () => {
   return (
     <View style={Style.container}>
-      <Text style={Style.title}>Obras Executados em Abril</Text>
+      <Text style={Style.title}>Obras Executadas </Text>
       <TextInput />
 
       <Image
