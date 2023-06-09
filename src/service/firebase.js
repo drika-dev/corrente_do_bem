@@ -2,15 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCTuMyKUlpdtx6s3cEN2cwHBZwXtH_btfE",
-  authDomain: "corrente-do-bem-79ee2.firebaseapp.com",
-  projectId: "corrente-do-bem-79ee2",
-  storageBucket: "corrente-do-bem-79ee2.appspot.com",
-  messagingSenderId: "1056783222321",
-  appId: "1:1056783222321:web:b323818ac490e50420b710",
-  measurementId: "G-SKBWMK211H"
+  apiKey: "AIzaSyB6Uz7kHjfujwHWA6hCR_Gx81zloWEBVBI",
+  authDomain: "projeto-corrente-do-bem-fed9f.firebaseapp.com",
+  projectId: "projeto-corrente-do-bem-fed9f",
+  storageBucket: "projeto-corrente-do-bem-fed9f.appspot.com",
+  messagingSenderId: "204739435403",
+  appId: "1:204739435403:web:e9eba07d9ba7eb832f2d8e",
+  measurementId: "G-BJ5J6DQ5KX"
 };
-
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
