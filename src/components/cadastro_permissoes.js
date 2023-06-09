@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View, TextInput, Text, Image, TouchableOpacity } from "react-native";
+
 import Style from "../../styles/style";
+
 const PermissionForm = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
