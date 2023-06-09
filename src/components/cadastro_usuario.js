@@ -39,7 +39,11 @@ export default function Cadastro() {
     console.log("Nome", nome);
     console.log("Email", email);
     console.log("Senha", senha);
-
+  
+    // Limpar os campos do formulário
+    setNome("");
+    setEmail("");
+    setSenha("");
   };
 
   return (
