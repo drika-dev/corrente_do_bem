@@ -1,49 +1,48 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Text, View, Image, TextInput, TouchableOpacity } from "react-native";
+import { View, TextInput, Text, Image, TouchableOpacity, Alert } from "react-native";
+import { collection, addDoc } from "firebase/firestore";
 
 import Style from "../../styles/style";
-import firebase from "../service/firebase";
+import db from "../service/firebase"; 
 
 export default function Cadastro() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  
+
   const handleNomeChange = (text) => {
     setNome(text);
   };
 
-  const handleEmailChange = (email) => {
-    setEmail(email);
-  };
-  const handleSenhaChange = (password) => {
-    setSenha(password);
+  const handleEmailChange = (text) => {
+    setEmail(text);
   };
 
-  //Autenticação com o firebase
-  const loginFirebase = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(nome, email, senha)
-      .then((userCredential) => {
-        console.log("USER:" + userCredential);
-      })
-      .catch((error) => {
-        console.log(" errorMessage:" + error);
-      });
+  const handleSenhaChange = (text) => {
+    setSenha(text);
   };
 
-  const cadastro = () => {
-    alert("CADASTRO EFETUADO COM SUCESSO");
-    console.log("Nome", nome);
-    console.log("Email", email);
-    console.log("Senha", senha);
+  const cadastrarUsuario = async () => {
+    const novoUsuario = {
+      nome: nome,
+      email: email,
+      senha: senha,
+    };
   
-    // Limpar os campos do formulário
-    setNome("");
-    setEmail("");
-    setSenha("");
+    try {
+      const docRef = await addDoc(collection(db, "usuarios"), novoUsuario);
+      console.log("Usuário cadastrado com ID:", docRef.id);
+  
+      setNome("");
+      setEmail("");
+      setSenha("");
+  
+      Alert.alert("Cadastro de usuário efetuado", "O usuário foi cadastrado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao cadastrar usuário:", error);
+      Alert.alert("Erro ao cadastrar usuário", "Ocorreu um erro ao cadastrar o usuário. Por favor, tente novamente.");
+    }
   };
 
   return (
@@ -74,7 +73,7 @@ export default function Cadastro() {
         style={Style.input}
       />
 
-      <TouchableOpacity style={Style.botao} onPress={() => cadastro()}>
+      <TouchableOpacity style={Style.botao} onPress={cadastrarUsuario}>
         <Text style={Style.buttonText}> Cadastrar </Text>
       </TouchableOpacity>
      </View>
