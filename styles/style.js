@@ -78,4 +78,34 @@ export default StyleSheet.create({
     borderColor: "red",
     marginVertical: 6,
   },
+  tableContainer: {
+    marginTop: 16,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 5,
+    padding: 16,
+  },
+  tableHead: {
+    backgroundColor: "#8A0808",
+  },
+  tableHeadText: {
+    fontSize: 16,
+    color: "white",
+    fontWeight: "bold",
+  },
+  tableRow: {
+    height: 40,
+    backgroundColor: "#FFFFFF",
+  },
+  tableRowText: {
+    fontSize: 16,
+    color: "#000000",
+  },
+  scrollView: {
+    flex: 1,
+    marginBottom: 16,
+  },
+  tableBorder: {
+    borderWidth: 1,
+    borderColor: 'black',
+  },
 });

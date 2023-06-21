@@ -4,7 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Tela_principal from "./src/components/home";
 import Cadastro_Usuario from "./src/components/cadastro_usuario";
-import Cadastro_Permissao from "./src/components/cadastro_permissoes";
+import Cadastro_Permissao from "./src/components/permissao/cadastro_permissoes";
 import Cadastro_Servico from "./src/components/cadastro_servico";
 import Servicos_Feitos from "./src/components/servicos_feitos";
 import Cadastro_voluntario from "./src/components/cadastro_voluntario";

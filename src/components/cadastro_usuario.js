@@ -4,7 +4,7 @@ import { View, TextInput, Text, Image, TouchableOpacity, Alert } from "react-nat
 import { collection, addDoc } from "firebase/firestore";
 
 import Style from "../../styles/style";
-import db from "../service/firebase"; 
+import { db } from "../service/firebase"; 
 
 export default function Cadastro() {
   const [nome, setNome] = useState("");
