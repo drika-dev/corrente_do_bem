@@ -24,24 +24,26 @@ export default function Cadastro() {
       const usuariosRef = collection(db, "usuarios");
       const usuariosQuery = query(usuariosRef, where("email", "==", email));
       const querySnapshot = await getDocs(usuariosQuery);
-
+      // Alerta de erro email nao cadastrado
       if (querySnapshot.empty) {
-        Alert.alert("Usuário não encontrado", "O email fornecido não está cadastrado.");
+        Alert.alert("USUÁRIO NÃO ENCONTRADO", "O EMAIL FORNECIDO NÃO ESTÁ CADASTRADO.");
         return;
       }
-
+      // Alerta de senha incorreta
       const user = querySnapshot.docs[0].data();
       if (user.senha !== senha) {
-        Alert.alert("Senha incorreta", "A senha fornecida está incorreta.");
+        Alert.alert("SENHA INCORRETA", "A SENHA FORNECIDA ESTÁ INCORRETA.");
         return;
       }
 
       await signInWithEmailAndPassword(auth, email, senha);
       console.log("Usuário autenticado com sucesso!", user);
-      Alert.alert("Autenticação bem-sucedida", "Você foi autenticado com sucesso!");
+      // alerta de autenticação
+      Alert.alert("AUTENTICAÇÃO BEM-SUCEDIDA", "VOCÊ FOI AUTENTICADO COM SUCESSO!");
     } catch (error) {
+      // Alerta erro no cadastro dentro do firebase 
       console.error("Erro ao autenticar usuário:", error);
-      Alert.alert("Erro ao autenticar usuário", "Ocorreu um erro ao autenticar o usuário. Por favor, verifique seu email e senha.");
+      Alert.alert("ERRO AO AUTENTICAR USUÁRIO", "OCORREU UM ERRO AO AUTENTICAR O USUÁRIO. POR FAVOR, VERIFIQUE SEU EMAIL E SENHA.");
     }
   };
 
