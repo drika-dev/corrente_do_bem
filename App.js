@@ -8,6 +8,7 @@ import Cadastro_Permissao from "./src/components/permissao/cadastro_permissoes";
 import Cadastro_Servico from "./src/components/cadastro_servico";
 import Servicos_Feitos from "./src/components/servicos_feitos";
 import Cadastro_voluntario from "./src/components/cadastro_voluntario";
+import Cadastro_doacao from "./src/components/cadastro_doacao";
 import Login from "./src/components/login_usuario";
 import Mapa from "./src/components/maps";
 
@@ -31,6 +32,7 @@ function MyDrawer() {
       <Drawer.Screen name="Cadastrar Permissões" component={Cadastro_Permissao}/>
       <Drawer.Screen name="Cadastrar Serviço" component={Cadastro_Servico} />
       <Drawer.Screen name="Cadastrar Voluntário" component={Cadastro_voluntario} />
+      <Drawer.Screen name="Cadastrar Doação" component={Cadastro_doacao} />      
       <Drawer.Screen name="Locais de Doação" component={Mapa} />
       <Drawer.Screen name="Serviços Executados" component={Servicos_Feitos} />
 

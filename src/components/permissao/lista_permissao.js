@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Alert, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { collection, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../service/firebase";
+import PermissionForm from "./cadastro_permissoes";
 
 import Style from "../../../styles/style";
 
@@ -76,8 +77,8 @@ const PermissionList = () => {
   }; 
 
   return (
-    <ScrollView contentContainerStyle={Style.container}>
-      <Text style={Style.title}>Lista de Permissões</Text>
+    <ScrollView contentContainerStyle={Style.Container}>
+      <Text style={Style.tableHeadText}>Lista de Permissões</Text>
       <View style={Style.tableContainer}>
         {tableData.map((permission) => (
           <View style={Style.row} key={permission.id}>
@@ -86,7 +87,7 @@ const PermissionList = () => {
             <TouchableOpacity
               style={Style.editButton}
               onPress={() => {
-                navigation.navigate("PermissionNavigator", {
+                navigation.navigate("PermissionForm", {
                   permissionId: permission.id,
                   name: permission.NomePermissao,
                   description: permission.DescricaoPermissao,

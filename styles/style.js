@@ -89,7 +89,7 @@ export default StyleSheet.create({
   },
   tableHeadText: {
     fontSize: 16,
-    color: "white",
+    color: "red",
     fontWeight: "bold",
   },
   tableRow: {

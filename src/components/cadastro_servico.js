@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { View, TextInput, Text, Image, TouchableOpacity } from "react-native";
-import Style from "../../styles/style";
+import { View, TextInput, Text, Image, TouchableOpacity, Alert} from "react-native";
+import { collection, addDoc } from "firebase/firestore";
 
+import Style from "../../styles/style";
+import { db } from "../service/firebase"; 
 
 const CadastroServico = () => {
   const [name, setName] = useState("");
@@ -25,14 +27,32 @@ const CadastroServico = () => {
     setHora(text);
   };
 
-  const handleSubmit = () => {
-    // Aqui será para fazer a lógica para enviar os dados de cadastro para o servidor
-    console.log("Digite Seu Nome", name);
-    console.log("Qual sera o serviço prestado ?", servico);
-    console.log("Qual a data da prestaçao de serviço ?", data);
-    console.log("Qual a hora da prestaçao de serviço ?", hora);
-  };
+  const handleSubmit = async () => {
+    const novoServicos = {
+      name: name,
+      servico: servico,
+      data: data,
+      hora: hora,
+    };
 
+   try {
+    const docRef = await addDoc(collection(db, "Servicos"), novoServicos);
+        console.log("Serviço cadastardo com o ID:", docRef.id);
+
+        setName("");
+        setServico("");
+        setData("");
+        setHora("");
+
+        Alert.alert("Cadastro de serviço efetuado", "O serviço foi cadastrado com sucesso!");
+       } catch (error) {
+     console.error("Erro ao cadastrar serviço:", error);
+     Alert.alert(
+      "Erro ao cadastrar serviço",
+      "Ocorreu um erro ao cadastrar o serviço. Por favor, tente novamente.");
+       }
+  };
+  
   return (
     <View style={Style.container}>
       <Image
