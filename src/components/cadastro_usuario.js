@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { View, TextInput, Text, Image, TouchableOpacity, Alert } from "react-native";
 import { collection, addDoc } from "firebase/firestore";
 
+
 import Style from "../../styles/style";
 import { db } from "../service/firebase"; 
 

@@ -29,7 +29,7 @@ const CadastroDoacao = () => {
   return (
     <View style={Style.container}>
       <Image
-        style={Style.image}
+        style={Style.image_logo}
         source={require("../../assets/logo.png")} // caminho e nome do arquivo da imagem do projeto
       />
       <Text style={Style.title}>Cadastro de Doações</Text>
