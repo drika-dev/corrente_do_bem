@@ -5,6 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Tela_principal from "./src/components/home";
 import Cadastro_Usuario from "./src/components/cadastro_usuario";
 import Cadastro_Permissao from "./src/components/permissao/cadastro_permissoes";
+import Lista_Permissao from "./src/components/permissao/lista_permissao";
 import Cadastro_Servico from "./src/components/cadastro_servico";
 import Servicos_Feitos from "./src/components/servicos_feitos";
 import Cadastro_voluntario from "./src/components/cadastro_voluntario";
@@ -37,13 +38,32 @@ export default function App() {
           }}
         >
           <Drawer.Screen name="Página Inicial" component={Tela_principal} />
-          <Drawer.Screen name="Cadastro de Usuário" component={Cadastro_Usuario} />
-          <Drawer.Screen name="Cadastrar Permissões" component={Cadastro_Permissao} />
-          <Drawer.Screen name="Cadastrar Serviço" component={Cadastro_Servico} />
-          <Drawer.Screen name="Cadastrar Voluntário" component={Cadastro_voluntario} />
-          <Drawer.Screen name="Cadastrar Doação" component={Cadastro_doacao} />      
+          <Drawer.Screen
+            name="Cadastro de Usuário"
+            component={Cadastro_Usuario}
+          />
+          <Drawer.Screen
+            name="Cadastrar Permissões"
+            component={Cadastro_Permissao}
+          />
+          <Drawer.Screen
+            name="Cadastrar Serviço"
+            component={Cadastro_Servico}
+          />
+          <Drawer.Screen
+            name="Cadastrar Voluntário"
+            component={Cadastro_voluntario}
+          />
+          <Drawer.Screen name="Cadastrar Doação" component={Cadastro_doacao} />
           <Drawer.Screen name="Locais de Doação" component={Mapa} />
-          <Drawer.Screen name="Serviços Executados" component={Servicos_Feitos} />
+          <Drawer.Screen
+            name="Lista de Permissões"
+            component={Lista_Permissao}
+          />
+          <Drawer.Screen
+            name="Serviços Executados"
+            component={Servicos_Feitos}
+          />
         </Drawer.Navigator>
       ) : (
         <Login onAuthentication={handleAuthentication} />
