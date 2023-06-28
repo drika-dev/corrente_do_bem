@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Alert, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { collection, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../../service/firebase";
-import PermissionForm from "./cadastro_permissoes";
 
-import Style from "../../../styles/style";
+import Style from "../../../styles/stylePermission";
 
 const PermissionList = () => {
   const [tableData, setTableData] = useState([]);
@@ -15,17 +20,17 @@ const PermissionList = () => {
     try {
       const querySnapshot = await getDocs(collection(db, "permissions"));
       const permissions = [];
-  
+
       querySnapshot.forEach((doc) => {
         const permission = {
           id: doc.id,
           NomePermissao: doc.data().NomePermissao,
           DescricaoPermissao: doc.data().DescricaoPermissao,
         };
-  
+
         permissions.push(permission);
       });
-  
+
       setTableData(permissions);
     } catch (error) {
       console.error("Erro ao buscar permissões:", error);
@@ -45,12 +50,18 @@ const PermissionList = () => {
       await deleteDoc(doc(db, "permissions", permissionId));
       console.log("Permissão deletada com ID:", permissionId);
 
-      Alert.alert("Permissão deletada", "A permissão foi deletada com sucesso!");
+      Alert.alert(
+        "Permissão deletada",
+        "A permissão foi deletada com sucesso!"
+      );
 
       fetchPermissions(); // Atualiza a lista de permissões após deletar
     } catch (error) {
       console.error("Erro ao deletar permissão:", error);
-      Alert.alert("Erro ao deletar permissão", "Ocorreu um erro ao deletar a permissão. Por favor, tente novamente.");
+      Alert.alert(
+        "Erro ao deletar permissão",
+        "Ocorreu um erro ao deletar a permissão. Por favor, tente novamente."
+      );
     }
   };
 
@@ -64,7 +75,10 @@ const PermissionList = () => {
 
       console.log("Permissão atualizada com ID:", permissionId);
 
-      Alert.alert("Permissão atualizada", "A permissão foi atualizada com sucesso!");
+      Alert.alert(
+        "Permissão atualizada",
+        "A permissão foi atualizada com sucesso!"
+      );
 
       fetchPermissions(); // Atualiza a lista de permissões após atualizar
     } catch (error) {
@@ -74,11 +88,11 @@ const PermissionList = () => {
         "Ocorreu um erro ao atualizar a permissão. Por favor, tente novamente."
       );
     }
-  }; 
+  };
 
   return (
-    <ScrollView contentContainerStyle={Style.Container}>
-      <Text style={Style.tableHeadText}>Lista de Permissões</Text>
+    <ScrollView contentContainerStyle={Style.container}>
+      <Text style={Style.title}>Lista de Permissões</Text>
       <View style={Style.tableContainer}>
         {tableData.map((permission) => (
           <View style={Style.row} key={permission.id}>

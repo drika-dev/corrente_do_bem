@@ -108,13 +108,13 @@ const PermissionForm = ({ route }) => {
         <TextInput
           style={Style.input}
           onChangeText={handleNameChange}
-          value={newName}
+          value={name}
           placeholder="Nome da permissão"
         />
         <TextInput
           style={Style.input}
           onChangeText={handleDescriptionChange}
-          value={newDescription}
+          value={description}
           placeholder="Descrição da permissão"
         />
         <TouchableOpacity style={Style.botao} onPress={handleSubmit}>
