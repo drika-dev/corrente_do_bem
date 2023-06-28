@@ -6,7 +6,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
-    backgroundColor: "#696969",
+    backgroundColor: "#ffffff",
   },
   textbtn: {
     fontSize: 20,
@@ -52,7 +52,7 @@ export default StyleSheet.create({
   title: {
     marginBottom: 16,
     fontSize: 20,
-    color: "white",
+    color: "#B22222",
     fontSize: 24,
     fontWeight: "bold",
   },

@@ -1,8 +1,10 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import 'react-native-reanimated'
+import { Routes } from './src/components/tab_bar/routes';
+//import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import Tela_principal from "./src/components/home";
+/*import Tela_principal from "./src/components/home";
 import Cadastro_Usuario from "./src/components/cadastro_usuario";
 import Cadastro_Permissao from "./src/components/permissao/cadastro_permissoes";
 import Lista_Permissao from "./src/components/permissao/lista_permissao";
@@ -11,20 +13,26 @@ import Servicos_Feitos from "./src/components/servicos_feitos";
 import Cadastro_voluntario from "./src/components/cadastro_voluntario";
 import Cadastro_doacao from "./src/components/cadastro_doacao";
 import Login from "./src/components/login_usuario";
-import Mapa from "./src/components/maps";
+import Mapa from "./src/components/maps";*/
 
-const Drawer = createDrawerNavigator();
+//const Drawer = createDrawerNavigator();
 
 export default function App() {
-  const [authenticated, setAuthenticated] = React.useState(false);
+  return (
+    <NavigationContainer>
+      <Routes/>
+    </NavigationContainer>
+  );
+
+  /*const [authenticated, setAuthenticated] = React.useState(false);
 
   const handleAuthentication = () => {
     // Perform your authentication logic here
     // Once the authentication is successful, set the authenticated state to true
     setAuthenticated(true);
-  };
+  };*/
 
-  return (
+  /*return (
     <NavigationContainer>
       {authenticated ? (
         <Drawer.Navigator
@@ -69,5 +77,5 @@ export default function App() {
         <Login onAuthentication={handleAuthentication} />
       )}
     </NavigationContainer>
-  );
+  );*/
 }
