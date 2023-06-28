@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextInput, Text, Image, TouchableOpacity, Alert, ScrollView } from "react-native";
-import { addDoc, collection, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import PermissionList from "./lista_permissao";
