@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { View, TextInput, Text, Image, TouchableOpacity, Alert} from "react-native";
-import { collection, addDoc } from "firebase/firestore";
+import { TextInput, Text, Image, TouchableOpacity, Alert, ScrollView } from "react-native";
+import { addDoc, collection } from "firebase/firestore";
+import { useNavigation } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import ServicoList from "./lista_servico";
 
-import Style from "../../styles/style";
-import { db } from "../service/firebase"; 
+import Style from "../../../styles/style";
+import { db } from "../../service/firebase";
+
+const Stack = createStackNavigator();
 
 const CadastroServico = () => {
   const [name, setName] = useState("");
   const [servico, setServico] = useState("");
   const [data, setData] = useState("");
   const [hora, setHora] = useState("");
+
+  const navigation = useNavigation();
 
   const handleNameChange = (text) => {
     setName(text);
@@ -45,6 +52,7 @@ const CadastroServico = () => {
         setHora("");
 
         Alert.alert("Cadastro de serviço efetuado", "O serviço foi cadastrado com sucesso!");
+        navigation.navigate("ServicoList");
        } catch (error) {
      console.error("Erro ao cadastrar serviço:", error);
      Alert.alert(
@@ -54,44 +62,51 @@ const CadastroServico = () => {
   };
   
   return (
-    <View style={Style.container}>
+    <ScrollView contentContainerStyle={Style.container}>
       <Image
         style={Style.image_logo}
-        source={require("../../assets/servico.png")} // caminho e nome do arquivo da imagem do projeto
+        source={require("../../../assets/servico.png")} // caminho e nome do arquivo da imagem do projeto
       />
-      <Text style={Style.title}>Cadastre Uma Prestaçao de Serviço </Text>
+      <Text style={Style.title}>Cadastre uma prestaçao de serviço </Text>
       <TextInput
         style={Style.input}
         onChangeText={handleNameChange}
         value={name}
-        placeholder="Digite Seu Nome"
+        placeholder="Digite seu nome"
       />
       <TextInput
         style={Style.input}
         onChangeText={handleServicoChange}
         value={servico}
-        placeholder="Qual sera o serviço prestado ?"
+        placeholder="Qual será o serviço prestado?"
       />
 
       <TextInput
         style={Style.input}
         onChangeText={handleDataChange}
         value={data}
-        placeholder="Qual a data da prestaçao de serviço ?"
+        placeholder="Qual a data da prestaçao de serviço?"
       />
 
       <TextInput
         style={Style.input}
         onChangeText={handleHoraChange}
         value={hora}
-        placeholder="Qual a hora da prestaçao de serviço ?"
+        placeholder="Qual a hora da prestaçao de serviço?"
       />
 
       <TouchableOpacity style={Style.botao} onPress={handleSubmit}>
         <Text style={Style.textbtn}>Cadastrar Serviço </Text>
       </TouchableOpacity>
-    </View>
+      </ScrollView>
   );
 };
 
-export default CadastroServico;
+const ServicoNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="CadastroServico" component={CadastroServico} options={{ headerShown: false }} />
+    <Stack.Screen name="ServicoList" component={ServicoList} options={{ headerShown: false }} />
+  </Stack.Navigator>
+);
+
+export default ServicoNavigator;
